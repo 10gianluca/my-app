@@ -1,14 +1,97 @@
-.sillyButton {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 20px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #00e0d8;
-    background-color: #9f28f4;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 9px #1c1c1c;
-  }
+@font-face {
+  font-family: "heart";   /*Can be any text*/
+  src: local("Merisa-gxvMY"),
+    url("./fonts/Merisa-gxvMY.ttf") format("truetype");
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.pageHome {
+  min-height: 100vh;
+  width: 100%;
+  border: 5px solid #a83f39;
+  background-color: rgb(250, 245, 221);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Adjust the vertical positioning */
+  align-items: center;
+  padding-top: 50px; /* Add some top padding to create space for the title */
+  padding-bottom: 50px; /* Add some bottom padding to create space for the buttons */
+}
+
+.title {
+  text-align: center;
+  color: #a83f39;
+  font-family: "heart";
+  font-size: 80px;
+  margin: 0;
+  width: 100%;
+}
+
+.buttonsContainer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the buttons horizontally */
+  align-items: flex-start;
+  gap: 20px;
+  top: 90px;
+  margin-top: auto; /* Push the buttons to the bottom of the screen */
+}
+
+.sillyButton,
+.boredButton,
+.happyButton,
+.sadButton {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: rgb(250, 245, 221);
+  background-color: #a83f39;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 9px #ff0000;
+  width: 150px; 
+  height: 50px;
+}
+
+.title{
+  text-align: center;
+  color: #a83f39;
+  font-family: "heart";
+  font-size: 80px;
+  margin: auto;
+  width: 100%;
+}
+.natName{
+  text-align: center;
+  color: #a83f39;
+  font-family: "heart";
+  font-size: 80px;
+  margin: auto;
+  width: 100%;
+}
+.subtitle{
+  text-align: center;
+  color: #a83f39;
+  font-family: "heart";
+  font-size: 80px;
+  margin: auto;
+  width: 100%;
+}
+
+#buttons:hover {background-color: #7a0d08}
+
+#buttons:active {
+  background-color: #a83f39;
+  box-shadow: 0 5px #ff6464;
+  transform: translateY(4px);
+}

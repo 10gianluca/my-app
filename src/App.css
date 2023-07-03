@@ -1,0 +1,5 @@
+@font-face {
+    font-family: "heart";   /*Can be any text*/
+    src: local("Merisa-gxvMY"),
+      url("./fonts/Merisa-gxvMY.ttf") format("truetype");
+  }

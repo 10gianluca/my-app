@@ -27,6 +27,7 @@ function Silly() {
   };
 
   return (
+  <body className="pageSilly">
     <div className="Silly">
         <nav className='navBar'>
           <div className="buttonContainer">
@@ -51,6 +52,7 @@ function Silly() {
           />
         </header>
     </div>
+  </body>
   );
 }
 
