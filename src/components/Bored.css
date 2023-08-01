@@ -1,0 +1,173 @@
+.pageBored{
+  background-color: #53004c;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #00e0d8;
+      background-color: #9f28f4;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 9px #1c1c1c;
+    }
+    .buttonContainer {
+      position: absolute;
+      z-index: 1; 
+    }
+    .button:hover {background-color: #8d50d9}
+    .button:active {
+      background-color: #9f28f4;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    #homeButton{
+      width: 100px;
+      opacity: 100%;
+      margin: 10px;
+    }
+
+
+
+
+    #boredBtn{
+      position: absolute;
+      top: 35%;
+      left: 25%;
+      width: 200px;
+      height: 200px;
+    }
+    #aloneBtn{
+      visibility: hidden;
+      position: absolute;
+      top: 35%;
+      left: 39%;
+
+    }
+    #glBtn{
+      visibility: hidden;
+      position: absolute;
+      top: 55%;
+      left: 36%;
+    }
+    #outsideBtn{
+      visibility: hidden;
+      position: absolute;
+      top: 55%;
+      left: 36%;
+    }
+    #insideBtn{
+      visibility: hidden;
+      position: absolute;
+      top: 35%;
+      left: 38%;
+    }
+    #winterBtn{
+      visibility: hidden;
+      position: absolute;
+      top: 55%;
+      left: 38%;
+    }
+    #summerBtn{
+      visibility: hidden;
+      position: absolute;
+      top: 35%;
+      left: 36%;
+    }
+    #reloadBtn{
+      visibility: hidden;
+      position: absolute;
+      top: 75%;
+      left: 38%;
+    }
+    .ButtonList{
+      
+    }
+
+    
+
+  }
+  
+  
+  @media only screen and (min-width: 768px) {
+
+    .ButtonList{
+      position: absolute;
+      top: 50%;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #00e0d8;
+      background-color: #9f28f4;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 9px #1c1c1c;
+    }
+    .buttonContainer {
+      position: absolute;
+      z-index: 1;
+    }
+    .button:hover {background-color: #8d50d9}
+    .button:active {
+      background-color: #9f28f4;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    #homeButton{
+      width: 100px;
+      opacity: 100%;
+      margin: 10px;
+    }
+
+
+
+
+    #boredBtn{
+      position: absolute;
+      top: 40%;
+      left: 37%;
+      width: 200px;
+    }
+    #aloneBtn{
+      visibility: hidden;
+    }
+    #glBtn{
+      visibility: hidden;
+    }
+    #outsideBtn{
+      visibility: hidden;
+    }
+    #insideBtn{
+      visibility: hidden;
+    }
+    #winterBtn{
+      visibility: hidden;
+    }
+    #summerBtn{
+      visibility: hidden;
+    }
+    #reloadBtn{
+      visibility: hidden;
+    }
+    .ButtonList{
+    }
+    
+    
+
+  }
