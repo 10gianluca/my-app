@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/my-app/static/css/main.3954caea.css",
+    "main.js": "/my-app/static/js/main.0e1eafc2.js",
+    "static/media/photo77.mp4": "/my-app/static/media/photo77.0358706d30f12f7a7935.mp4",
+    "static/media/IMFellDWPica-Italic.ttf": "/my-app/static/media/IMFellDWPica-Italic.7ca3686282592e8cc0a2.ttf",
+    "static/media/Merisa-gxvMY.ttf": "/my-app/static/media/Merisa-gxvMY.536d4b6fe639e1c5edd8.ttf",
+    "index.html": "/my-app/index.html",
+    "main.3954caea.css.map": "/my-app/static/css/main.3954caea.css.map",
+    "main.0e1eafc2.js.map": "/my-app/static/js/main.0e1eafc2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3954caea.css",
+    "static/js/main.0e1eafc2.js"
+  ]
+}
