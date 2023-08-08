@@ -6,10 +6,6 @@ import "./fonts/IMFellDWPica-Italic.ttf"
  function Uno() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-
-  });
-
   const changePage = (e) => {
     e.preventDefault();
     navigate('/')

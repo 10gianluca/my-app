@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import './Bored.css';
 
 function Bored() {
-  const [photoOfNat, setPhotoOfNat] = useState('');
-  const [boredStarted, setBoredStarted] = useState(false); 
   const navigate = useNavigate();
   
   const glInside = ["Movie", "Old Board Game", "New Board Game", "Puzzle", "Puzzle??", "Ping Pong", "Reality Tv", "Craft", "Cook", "Video Game", "Nap", "Code", "Workout", "Go Outside"]
@@ -14,19 +12,6 @@ function Bored() {
   const aloneOutsideSummer = ["Run", "Walk", "Garden", "Change Bucky's Cage", "Walk Bucky", "Bike", "Read", "Tan", "Kayak", "Go Inside"]
   const aloneOutsideWinter = ["Cross Country Ski", "Fort", "Walk", "Snowman", "Drive", "Go Inside"]
 
-
-  useEffect(() => {
-    const badImageNames = Array.from({ length: 11 }, (_, index) => `photo${index + 1}.jpg`);
-
-    const interval = setInterval(() => {
-      const randomPhoto = badImageNames[Math.floor(Math.random() * badImageNames.length)];
-      setPhotoOfNat(randomPhoto);
-    }, 500);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
 
   const changePage = (e) => {
     e.preventDefault();

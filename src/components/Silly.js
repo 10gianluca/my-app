@@ -36,18 +36,18 @@ function Silly() {
         </nav>
         <header className="Silly-header">
           <video className='videoTag1' autoPlay loop muted>
-            <source src={process.env.PUBLIC_URL + '/images/photo77.mp4'} type='video/mp4' />
+            <source src={process.env.PUBLIC_URL + '/images/photo77.mp4'} alt="naa" type='video/mp4' />
           </video>
           <video className='videoTag2' autoPlay loop muted>
-            <source src={process.env.PUBLIC_URL + '/images/photo77.mp4'} type='video/mp4' />
+            <source src={process.env.PUBLIC_URL + '/images/photo77.mp4'} alt="naa" type='video/mp4' />
           </video>
           <video className='videoTag3' autoPlay loop muted>
-            <source src={process.env.PUBLIC_URL + '/images/photo77.mp4'} type='video/mp4' />
+            <source src={process.env.PUBLIC_URL + '/images/photo77.mp4'} alt="naa" type='video/mp4' />
           </video>
           <video className='videoTag4' autoPlay loop muted>
-            <source src={process.env.PUBLIC_URL + '/images/photo77.mp4'} type='video/mp4' />
+            <source src={process.env.PUBLIC_URL + '/images/photo77.mp4'} alt="naa" type='video/mp4' />
           </video>
-          <img
+          <img alt="naa"
             src={process.env.PUBLIC_URL + '/images/NotGoodPhotos/' + photoOfNat}
           />
         </header>
