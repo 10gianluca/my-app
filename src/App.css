@@ -3,3 +3,9 @@
     src: local("Merisa-gxvMY"),
       url("./fonts/Merisa-gxvMY.ttf") format("truetype");
   }
+
+  @font-face {
+    font-family: "myfont";
+    src: local("IMFellDWPica-Italic.ttf"),
+        url("./fonts/IMFellDWPica-Italic.ttf") format("truetype");
+}

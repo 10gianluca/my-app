@@ -1,0 +1,73 @@
+@font-face {
+    font-family: "myfont";
+    src: local("IMFellDWPica-Italic.ttf"),
+        url("./fonts/IMFellDWPica-Italic.ttf") format("truetype");
+}
+body{
+    overflow: hidden;
+
+}
+.pageUno{
+    background: linear-gradient(0deg, rgb(245, 201, 245) 0%, rgb(244, 159, 234) 35%, rgb(255, 78, 255) 100%);
+    height: 1000px;
+}
+h1{
+    display: inline;
+    font-family: Arial, sans-serif;
+}
+
+.natsTitle{
+    position: absolute;
+    left: 25%;
+}
+
+
+.titleOne{
+    font-size: 50px;
+}
+.natsLine{
+    font-family: "myfont";
+}
+
+.board{
+    padding: 30px;
+    border: 5px solid rgb(0, 0, 0); 
+    background: radial-gradient(circle, rgb(31, 31, 204) 0%, rgba(31,31,204) 35%, rgb(0, 8, 56) 100%);
+    border-radius: 8%;
+    margin: 9%;
+    margin-top: 5%;
+    display: inline-grid;
+    grid-template-columns:repeat(4, 1fr);
+    background-color: rgb(59, 59, 255);
+    column-gap: 10px;
+}
+
+#board2{
+    background:radial-gradient(circle, rgb(204, 31, 31) 0%, rgb(204, 31, 31) 35%, rgb(56, 0, 0) 100%); ;
+}
+
+input:focus {
+    outline: none;
+}
+input{
+    text-align: center;
+    font-family: Arial, sans-serif;;
+    font-size: 40px;
+    border: 3px solid black;
+    width: 50px;
+    height:50px;
+    border-radius: 13%;
+    margin: 8px;
+}
+
+.dottedSquare{
+    border-style: dashed;
+    background-color: rgba(59, 59, 255, 0) ;
+    border-color: white;
+}
+
+.dice{
+    position: absolute;
+    left: 28%;
+    bottom: 100px;
+}

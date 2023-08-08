@@ -9,9 +9,9 @@ function Home() {
     e.preventDefault();
     navigate('/Silly')
   };
-  const navBored = (e) => {
+  const navUno = (e) => {
     e.preventDefault();
-    navigate('/Bored')
+    navigate('/Uno')
   };
   const navBoard = (e) => {
     e.preventDefault();
@@ -20,14 +20,12 @@ function Home() {
   return (
   <body className="pageHome"> 
     <div className="HomePage">
-      <h1 className='title'> Happy 3 year anniversary </h1>
-      <h1 className='natName'> Nathalie</h1>
-      <h1 className='subtitle'> I Love You</h1>
+      <h1 className='title'> HEY BEAUTIFUL </h1>
+      <h1 className='subtitle'> WANNA PLAY A GAME</h1>
       <div class="buttonsContainer">
-        <button className="sillyButton" id="buttons" onClick={navSilly}> SILLY</button>
-        <button className="boredButton" id="buttons" onClick={navBored}> BORED</button>
-        <button className="BoardButton" id="buttons" onClick={navBoard}> BOARD</button>
-        <button className="sadButton" id="buttons" onClick={navSilly}> SAD</button>
+        <button className="sillyButton" id="buttons" onClick={navUno}> UNO</button>
+        <button className="boredButton" id="buttons" > QWINTO</button>
+
       </div>
     </div>
   </body>

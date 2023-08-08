@@ -1,8 +1,10 @@
 .pageBored{
-  background-color: #53004c;
+  background-color: #c300b3;
   width: 100%;
   height: 100%;
   position: absolute;
+  border: 5px solid #6f0085;
+  box-sizing: border-box;
 }
 
 
