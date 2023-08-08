@@ -12,7 +12,6 @@ body{
     height: 1000px;
 }
 h1{
-    display: inline;
     font-family: Arial, sans-serif;
 }
 
@@ -70,4 +69,18 @@ input{
     position: absolute;
     left: 28%;
     bottom: 100px;
+}
+
+@media only screen and (max-width: 768px) {
+    .natsTitle{
+        visibility: hidden;
+    }
+    #board1{
+        position: absolute;
+        top: 10%;
+        left: -8%;
+    }
+    #board2{
+        visibility: hidden;
+    }
 }
