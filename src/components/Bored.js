@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 import './Bored.css';
 
@@ -52,13 +52,13 @@ function Bored() {
     if (document.getElementById('aloneBtn').getAttribute('clicked')==='true'){
       document.getElementById('answer').style.visibility = 'visible'
       const randomIndex = Math.floor(Math.random() * aloneInside.length);
-      var answer = aloneInside[randomIndex];
-      document.getElementById('answer').textContent  = answer
+      var answer1 = aloneInside[randomIndex];
+      document.getElementById('answer').textContent  = answer1
     }else{
       document.getElementById('answer').style.visibility = 'visible'
       const randomIndex = Math.floor(Math.random() * glInside.length);
-      var answer = glInside[randomIndex];
-      document.getElementById('answer').textContent  = answer
+      var answer2 = glInside[randomIndex];
+      document.getElementById('answer').textContent  = answer2
     }
 
   };
@@ -70,13 +70,13 @@ function Bored() {
     if (document.getElementById('aloneBtn').getAttribute('clicked')==='true'){
       document.getElementById('answer').style.visibility = 'visible'
       const randomIndex = Math.floor(Math.random() * aloneOutsideWinter.length);
-      var answer = aloneOutsideWinter[randomIndex];
-      document.getElementById('answer').textContent  = answer
+      var answer3 = aloneOutsideWinter[randomIndex];
+      document.getElementById('answer').textContent  = answer3
     }else{
       document.getElementById('answer').style.visibility = 'visible'
       const randomIndex = Math.floor(Math.random() * glOutsideWinter.length);
-      var answer = glOutsideWinter[randomIndex];
-      document.getElementById('answer').textContent  = answer
+      var answer4 = glOutsideWinter[randomIndex];
+      document.getElementById('answer').textContent  = answer4
     }
   };
 
@@ -87,13 +87,13 @@ function Bored() {
     if (document.getElementById('aloneBtn').getAttribute('clicked')==='true'){
       document.getElementById('answer').style.visibility = 'visible'
       const randomIndex = Math.floor(Math.random() * aloneOutsideSummer.length);
-      var answer = aloneOutsideSummer[randomIndex];
-      document.getElementById('answer').textContent  = answer
+      var answer5 = aloneOutsideSummer[randomIndex];
+      document.getElementById('answer').textContent  = answer5
     }else{
       document.getElementById('answer').style.visibility = 'visible'
       const randomIndex = Math.floor(Math.random() * glOutsideSummer.length);
-      var answer = glOutsideSummer[randomIndex];
-      document.getElementById('answer').textContent  = answer
+      var answer6 = glOutsideSummer[randomIndex];
+      document.getElementById('answer').textContent  = answer6
     }
   };
 

@@ -1,21 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 import './Home.css';
 import "./fonts/Merisa-gxvMY.ttf";
 
 function Home() {
   const navigate = useNavigate();
-  const navSilly = (e) => {
-    e.preventDefault();
-    navigate('/Silly')
-  };
   const navUno = (e) => {
     e.preventDefault();
     navigate('/Uno')
-  };
-  const navBoard = (e) => {
-    e.preventDefault();
-    navigate('/Board')
   };
   return (
   <body className="pageHome"> 
