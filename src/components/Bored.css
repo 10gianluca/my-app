@@ -6,6 +6,11 @@
   border: 5px solid #6f0085;
   box-sizing: border-box;
 }
+#answer{
+  visibility: hidden;
+  background-color: rgb(255, 81, 214);
+  height: 20%;
+}
 
 
 @media only screen and (max-width: 768px) {
@@ -45,7 +50,8 @@
     #boredBtn{
       position: absolute;
       top: 35%;
-      left: 25%;
+      left: 50%; 
+      transform: translateX(-50%); 
       width: 200px;
       height: 200px;
     }
@@ -53,47 +59,57 @@
       visibility: hidden;
       position: absolute;
       top: 35%;
-      left: 39%;
-
+      left: 50%; 
+      transform: translateX(-50%); 
     }
     #glBtn{
       visibility: hidden;
       position: absolute;
       top: 55%;
-      left: 36%;
+      left: 50%; 
+      transform: translateX(-50%); 
     }
     #outsideBtn{
       visibility: hidden;
       position: absolute;
       top: 55%;
-      left: 36%;
+      left: 50%; 
+      transform: translateX(-50%); 
     }
     #insideBtn{
       visibility: hidden;
       position: absolute;
       top: 35%;
-      left: 38%;
+      left: 50%; 
+      transform: translateX(-50%); 
     }
     #winterBtn{
       visibility: hidden;
       position: absolute;
       top: 55%;
-      left: 38%;
+      left: 50%; 
+      transform: translateX(-50%); 
     }
     #summerBtn{
       visibility: hidden;
       position: absolute;
       top: 35%;
-      left: 36%;
+      left: 50%; 
+      transform: translateX(-50%); 
     }
     #reloadBtn{
       visibility: hidden;
       position: absolute;
       top: 75%;
-      left: 38%;
+      left: 50%; 
+      transform: translateX(-50%); 
     }
-    .ButtonList{
-      
+    #answer{
+      position: absolute;
+      top: 35%;
+      left: 50%; 
+      transform: translateX(-50%); 
+      width: 50%;
     }
 
     
@@ -142,32 +158,64 @@
 
     #boredBtn{
       position: absolute;
-      top: 40%;
-      left: 37%;
+      top: -600%;
+      left: 50%; 
+      height: 700%;
+      transform: translateX(-50%); 
       width: 200px;
     }
     #aloneBtn{
+      position: absolute;
       visibility: hidden;
+      top: -400%;
+      left: 50%; 
+      transform: translateX(-50%); 
     }
     #glBtn{
+      position: absolute;
       visibility: hidden;
+      left: 50%; 
+      transform: translateX(-50%); 
+      width: 150px;
     }
     #outsideBtn{
+      position: absolute;
       visibility: hidden;
+      left: 50%; 
+      transform: translateX(-50%); 
     }
     #insideBtn{
+      position: absolute;
       visibility: hidden;
+      top: -400%;
+      left: 50%; 
+      transform: translateX(-50%); 
     }
     #winterBtn{
+      position: absolute;
       visibility: hidden;
+      top: -400%;
+      left: 50%; 
+      transform: translateX(-50%); 
     }
     #summerBtn{
+      position: absolute;
       visibility: hidden;
+      left: 50%; 
+      transform: translateX(-50%); 
     }
     #reloadBtn{
+      position: absolute;
       visibility: hidden;
+      top: 500%;
+      left: 50%; 
+      transform: translateX(-50%); 
     }
     .ButtonList{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%); 
+
     }
     
     

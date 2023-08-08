@@ -7,7 +7,7 @@ function Bored() {
   const [boredStarted, setBoredStarted] = useState(false); 
   const navigate = useNavigate();
   
-  const glInside = ["Movie", "Old Board Game", "New Board Game", "Puzzle", "Ping Pong", "Reality Tv", "Craft", "Cook", "Video Game", "Nap", "Code", "Workout", "Go Outside"]
+  const glInside = ["Movie", "Old Board Game", "New Board Game", "Puzzle", "Puzzle??", "Ping Pong", "Reality Tv", "Craft", "Cook", "Video Game", "Nap", "Code", "Workout", "Go Outside"]
   const glOutsideSummer = ["Soccer", "Tennis", "Walk", "Bike", "Hike", "Picnic", "Kayak", "Drive", "Shopping", "Go Inside"]
   const glOutsideWinter = ["Tabogan", "Walk", "Fort", "ODR", "Snowman", "Drive", "Shopping", "Go Inside"]
   const aloneInside = ["Clean", "Tv", "Movie", "Puzzle", "Pottery", "Draw", "Paint", "Read", "Music", "Cook", "Bother Stephen", "Code", "Nap", "Video Game", "Go Outside"]
@@ -64,6 +64,17 @@ function Bored() {
     document.getElementById('insideBtn').setAttribute('clicked' , "true")
     document.getElementById('outsideBtn').style.visibility = 'hidden'
     document.getElementById('insideBtn').style.visibility = 'hidden'
+    if (document.getElementById('aloneBtn').getAttribute('clicked')==='true'){
+      document.getElementById('answer').style.visibility = 'visible'
+      const randomIndex = Math.floor(Math.random() * aloneInside.length);
+      var answer = aloneInside[randomIndex];
+      document.getElementById('answer').textContent  = answer
+    }else{
+      document.getElementById('answer').style.visibility = 'visible'
+      const randomIndex = Math.floor(Math.random() * glInside.length);
+      var answer = glInside[randomIndex];
+      document.getElementById('answer').textContent  = answer
+    }
 
   };
 
@@ -71,14 +82,34 @@ function Bored() {
     document.getElementById('winterBtn').setAttribute('clicked' , "true")
     document.getElementById('summerBtn').style.visibility = 'hidden'
     document.getElementById('winterBtn').style.visibility = 'hidden'
-
+    if (document.getElementById('aloneBtn').getAttribute('clicked')==='true'){
+      document.getElementById('answer').style.visibility = 'visible'
+      const randomIndex = Math.floor(Math.random() * aloneOutsideWinter.length);
+      var answer = aloneOutsideWinter[randomIndex];
+      document.getElementById('answer').textContent  = answer
+    }else{
+      document.getElementById('answer').style.visibility = 'visible'
+      const randomIndex = Math.floor(Math.random() * glOutsideWinter.length);
+      var answer = glOutsideWinter[randomIndex];
+      document.getElementById('answer').textContent  = answer
+    }
   };
 
   const summerClick = (e) => {
     document.getElementById('summerBtn').setAttribute('clicked' , "true")
     document.getElementById('summerBtn').style.visibility = 'hidden'
     document.getElementById('winterBtn').style.visibility = 'hidden'
-
+    if (document.getElementById('aloneBtn').getAttribute('clicked')==='true'){
+      document.getElementById('answer').style.visibility = 'visible'
+      const randomIndex = Math.floor(Math.random() * aloneOutsideSummer.length);
+      var answer = aloneOutsideSummer[randomIndex];
+      document.getElementById('answer').textContent  = answer
+    }else{
+      document.getElementById('answer').style.visibility = 'visible'
+      const randomIndex = Math.floor(Math.random() * glOutsideSummer.length);
+      var answer = glOutsideSummer[randomIndex];
+      document.getElementById('answer').textContent  = answer
+    }
   };
 
 
@@ -106,8 +137,9 @@ function Bored() {
             <button clicked='false' className='button' id='insideBtn' onClick={insideClick}>Inside</button>
             <button clicked='false' className='button' id='winterBtn' onClick={winterClick} >Winter</button>
             <button clicked='false' className='button' id='summerBtn' onClick={summerClick}>Summer</button>
+            <button className='button' id='answer' readonly></button>
             <button clicked='false' className='button' id='reloadBtn' onClick={reloadClick}>Reload</button>          
-          </div>
+        </div>
       </div>
     </body>
   );
