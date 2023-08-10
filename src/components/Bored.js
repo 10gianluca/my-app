@@ -99,7 +99,7 @@ function Bored() {
 
 
   const reloadClick = (e) => {
-    window.location.reload(false)
+    window.location.reload(true)
   };
 
 

@@ -9,6 +9,10 @@ function Home() {
     e.preventDefault();
     navigate('/Uno')
   };
+  const navQwinto = (e) => {
+    e.preventDefault();
+    navigate('/Qwinto')
+  }
   return (
   <body className="pageHome"> 
     <div className="HomePage">
@@ -16,7 +20,7 @@ function Home() {
       <h1 className='subtitle'> WANNA PLAY A GAME</h1>
       <div class="buttonsContainer">
         <button className="sillyButton" id="buttons" onClick={navUno}> UNO</button>
-        <button className="boredButton" id="buttons" > QWINTO</button>
+        <button className="boredButton" id="buttons" onClick={navQwinto} > QWINTO</button>
 
       </div>
     </div>
