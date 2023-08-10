@@ -18,13 +18,16 @@ h1{
 .natsTitle{
     position: absolute;
     left: 25%;
+    top: 1%;
 }
 
 
 .titleOne{
+    display: inline;
     font-size: 50px;
 }
 .natsLine{
+    display: inline;
     font-family: "myfont";
 }
 
