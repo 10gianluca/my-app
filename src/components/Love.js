@@ -9,7 +9,10 @@ function Love() {
     '/images/cards/card2-1.jpg',
     '/images/cards/card3-1.jpg',
     '/images/cards/card4-1.jpg',
-    '/images/cards/card5-1.jpg'
+    '/images/cards/card5-1.jpg',
+    '/images/cards/card6-1.png',
+    '/images/cards/card7-0.png',
+    '/images/cards/0.png'
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
