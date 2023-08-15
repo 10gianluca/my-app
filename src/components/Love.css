@@ -1,0 +1,26 @@
+.leftArrowIcon{
+    position: absolute;
+    top: 50%;
+    left: 3%;
+}
+.rightArrowIcon{
+    position: absolute;
+    top: 50%;
+    right: 3%;
+}
+.cardRoller{
+    position: absolute;
+    top: 50%;
+    height: 500px;
+    width: 340px;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+.cardCover {
+    position: relative;
+    animation: none;
+    height: 500px;
+    max-width: 100%; 
+    width: auto; 
+
+}

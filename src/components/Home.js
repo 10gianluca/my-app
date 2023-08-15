@@ -17,6 +17,10 @@ function Home() {
     e.preventDefault();
     navigate('/Board')
   };
+  const navLove = (e) => {
+    e.preventDefault();
+    navigate('/Love')
+  };
   return (
   <body className="pageHome"> 
     <div className="HomePage">
@@ -27,7 +31,7 @@ function Home() {
         <button className="sillyButton" id="buttons" onClick={navSilly}> SILLY</button>
         <button className="boredButton" id="buttons" onClick={navBored}> BORED</button>
         <button className="BoardButton" id="buttons" onClick={navBoard}> BOARD</button>
-        <button className="sadButton" id="buttons" onClick={navSilly}> SAD</button>
+        <button className="loveButton" id="buttons" onClick={navLove}> LOVE</button>
       </div>
     </div>
   </body>
