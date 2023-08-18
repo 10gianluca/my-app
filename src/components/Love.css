@@ -1,26 +1,113 @@
-.leftArrowIcon{
-    position: absolute;
-    top: 50%;
-    left: 3%;
+body{
+    background-color: rgb(255, 96, 160);
 }
-.rightArrowIcon{
+#card1{
+    visibility: hidden;
     position: absolute;
     top: 50%;
-    right: 3%;
 }
-.cardRoller{
+#card2{
+    visibility: hidden;
     position: absolute;
     top: 50%;
-    height: 500px;
-    width: 340px;
+}
+#card3{
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+}
+#card4{
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+}
+#card5{
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+}
+#card6{
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+}
+#card7{
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+}
+#card8{
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+}
+#reloadBtnCard{
+    position: absolute;
+    top: 90%;
     left: 50%; 
-    transform: translate(-50%, -50%);
-}
-.cardCover {
-    position: relative;
-    animation: none;
-    height: 500px;
-    max-width: 100%; 
-    width: auto; 
+    transform: translateX(-50%); 
+  }
 
+@media only screen and (max-width: 768px) {
+    .leftArrowIcon{
+        position: absolute;
+        top: 50%;
+        left: 3%;
+        font-size: 20px;
+    }
+    .rightArrowIcon{
+        position: absolute;
+        top: 50%;
+        right: 3%;
+        font-size: 20px;
+
+    }
+    .cardRoller{
+        position: absolute;
+        top: 50%;
+        height: 500px;
+        width: 340px;
+        left: 50%; 
+        transform: translate(-50%, -50%);
+    }
+    .cardCover {
+        position: relative;
+        animation: none;
+        height: 500px;
+        max-width: 100%; 
+        width: auto; 
+
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    .leftArrowIcon{
+        position: absolute;
+        top: 50%;
+        left: 3%;
+        font-size: 50px;
+    }
+    .rightArrowIcon{
+        position: absolute;
+        top: 50%;
+        right: 3%;
+        font-size: 50px;
+
+    }
+    .cardRoller{
+        position: absolute;
+        top: 50%;
+        height: 500px;
+        width: 340px;
+        left: 50%; 
+        transform: translate(-50%, -50%);
+    }
+    .cardCover {
+        position: relative;
+        animation: none;
+        height: 500px;
+        max-width: 100%; 
+        width: auto; 
+    }
 }
