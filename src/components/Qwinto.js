@@ -16,15 +16,36 @@ import "./fonts/IMFellDWPica-Italic.ttf"
         var diceClicked1 = document.getElementById("QwintoDie1").getAttribute("clicked");
         var diceClicked2 = document.getElementById("QwintoDie2").getAttribute("clicked");
         var diceClicked3 = document.getElementById("QwintoDie3").getAttribute("clicked");
-        if (diceClicked1 === "false"){
+        if (diceClicked1 === "true"){
             diceRoller1()
+        }else{
+            document.getElementById("QwintoDie1").value=''
         }
-        if (diceClicked2 === "false"){
+        if (diceClicked2 === "true"){
             diceRoller2()
+        }else{
+            document.getElementById("QwintoDie2").value=''
         }
-        if (diceClicked3 === "false"){
+        if (diceClicked3 === "true"){
             diceRoller3()
+        }else{
+            document.getElementById("QwintoDie3").value=''
         }
+        
+        const diceIds = ["QwintoDie1", "QwintoDie2", "QwintoDie3"];
+        let diceTotal = 0;
+
+        diceIds.forEach(diceId => {
+            const diceClicked = document.getElementById(diceId).getAttribute("clicked");
+            const diceValue = parseInt(document.getElementById(diceId).value, 10);
+
+            if (diceClicked === "true" && !isNaN(diceValue)) {
+            diceTotal += diceValue;
+            }
+        });
+
+        const diceTotalBox = document.getElementById("QwintoDieTotal");
+        diceTotalBox.value = diceTotal.toString();
 
     }
      const diceRoller1 = () => {
@@ -192,6 +213,7 @@ import "./fonts/IMFellDWPica-Italic.ttf"
                 <input class="QwintoDie2" id="QwintoDie2" onClick={() =>diceSelector('QwintoDie2')} clicked="false" readonly></input>
                 <input class="QwintoDie3" id="QwintoDie3" onClick={() =>diceSelector('QwintoDie3')} clicked="false" readonly></input>
                 <button onClick={() =>QwintoDiceRoller()}> roll</button>
+                <input class="QwintoDieTotal" id="QwintoDieTotal" readonly></input>
             </div>
             
         </div>

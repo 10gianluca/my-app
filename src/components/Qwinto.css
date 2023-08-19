@@ -1,90 +1,241 @@
-@font-face {
-    font-family: "myfont";
-    src: local("IMFellDWPica-Italic.ttf"),
-        url("./fonts/IMFellDWPica-Italic.ttf") format("truetype");
-}
-body{
-    overflow: hidden;
-}
-h1{
-    font-family: Arial, sans-serif;
-}
-input{
-    text-align: center;
-    font-family: Arial, sans-serif;;
-    font-size: 40px;
-    border: 3px solid black;
-    width: 50px;
-    height:50px;
-    border-radius: 13%;
-    margin: 8px;
-}
-.pageQwinto{
-    background-color: rgb(179, 179, 179);
-    min-height: 100vh;
-}
-.QwintoBoard{
-    padding: 10px;
-    border: 5px solid rgb(0, 0, 0); 
-    background: radial-gradient(circle, rgb(46, 46, 46) 0%, rgb(97, 97, 97) 35%, rgb(165, 165, 165) 100%);
-    margin: 9%;
-    margin-bottom: 0%;
-    display: inline-grid;
-    grid-template-columns:repeat(12, 1fr);
-    column-gap: 0px;
-}
-.QwintoDice{
-    position: absolute;
-    left: 28%;
-    top: 10%;
-}
-.QwintoSpaceSquare{
-    background-color: rgba(0, 255, 255, 0);
-    border: 0;
-}
-.QwintoCircleSquare{
-    border-radius: 50%;
-}
-
-.QwintoDie1{
-    background-color: rgb(249, 98, 43);
-}
-.QwintoDie2{
-    background-color: gold;
-}
-.QwintoDie3{
-    background-color: rgb(162, 0, 255);
-}
-.minus{
-    position: absolute;
-    left: 25.9%;
-    background-color: brown;
-}
-.QwintoScore{
-    position: absolute;
-    top: 55%;
-    left: 8%;
-}
-#orangeScore{
-    background-color: rgb(249, 98, 43);
-}
-#yellowScore{
-    background-color: gold;
-}
-#purpleScore{
-    background-color: rgb(162, 0, 255);
-}
-#minusScore{
-    background-color: brown;
-}
-@media only screen and (max-width: 768px) {
-    .natsTitle{
-        visibility: hidden;
+@media only screen and (min-width: 1024px) {
+    body{
+        overflow: hidden;
     }
-    #QwintoBoard1{
+    h1{
+        font-family: Arial, sans-serif;
+    }
+    input{
+        text-align: center;
+        font-family: Arial, sans-serif;;
+        font-size: 40px;
+        border: 3px solid black;
+        width: 50px;
+        height:50px;
+        border-radius: 13%;
+        margin: 8px;
+    }
+    .pageQwinto{
+        background-color: rgb(179, 179, 179);
+        min-height: 100vh;
+    }
+    .QwintoBoard{
+        padding: 10px;
+        border: 5px solid rgb(0, 0, 0); 
+        background: radial-gradient(circle, rgb(46, 46, 46) 0%, rgb(97, 97, 97) 35%, rgb(165, 165, 165) 100%);
+        margin: 9%;
+        margin-bottom: 0%;
+        display: inline-grid;
+        grid-template-columns:repeat(12, 1fr);
+        column-gap: 0px;
+    }
+    .QwintoDice{
         position: absolute;
+        left: 28%;
         top: 10%;
-        left: -8%;
+    }
+    .QwintoSpaceSquare{
+        background-color: rgba(0, 255, 255, 0);
+        border: 0;
+    }
+    .QwintoCircleSquare{
+        border-radius: 50%;
     }
 
+    .QwintoDie1{
+        background-color: rgb(249, 98, 43);
+    }
+    .QwintoDie2{
+        background-color: gold;
+    }
+    .QwintoDie3{
+        background-color: rgb(162, 0, 255);
+    }
+    .minus{
+        position: absolute;
+        left: 25.9%;
+        background-color: brown;
+    }
+    .QwintoScore{
+        position: absolute;
+        top: 55%;
+        left: 8%;
+    }
+    #orangeScore{
+        background-color: rgb(249, 98, 43);
+    }
+    #yellowScore{
+        background-color: gold;
+    }
+    #purpleScore{
+        background-color: rgb(162, 0, 255);
+    }
+    #minusScore{
+        background-color: brown;
+    }
+
+}
+
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+    body {
+        overflow: hidden;
+    }
+    h1 {
+        font-family: Arial, sans-serif;
+    }
+    input {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        border: 2px solid black;
+        width: 30px;
+        height: 30px;
+        border-radius: 10%;
+        margin: 5px;
+    }
+    .pageQwinto {
+        background-color: rgb(179, 179, 179);
+        min-height: 100vh;
+    }
+    .QwintoBoard {
+        padding: 5px;
+        border: 3px solid rgb(0, 0, 0);
+        background: radial-gradient(circle, rgb(46, 46, 46) 0%, rgb(97, 97, 97) 35%, rgb(165, 165, 165) 100%);
+        margin: 5%;
+        margin-bottom: 0%;
+        display: inline-grid;
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 0px;
+        transform: scale(0.7);
+        left: -26.5%;
+        top: 20%;
+        position: absolute;
+    }
+    .QwintoDice {
+        position: absolute;
+        left: 20%;
+        top: 10%;
+    }
+    .QwintoSpaceSquare {
+        background-color: rgba(0, 255, 255, 0);
+        border: 0;
+    }
+    .QwintoCircleSquare {
+        border-radius: 50%;
+    }
+    .QwintoDie1 {
+        background-color: rgb(249, 98, 43);
+    }
+    .QwintoDie2 {
+        background-color: gold;
+    }
+    .QwintoDie3 {
+        background-color: rgb(162, 0, 255);
+    }
+    .minus {
+        position: absolute;
+        left: 30%;
+        top: 40%;
+        background-color: brown;
+    }
+    .QwintoScore {
+        position: absolute;
+        top: 45%;
+        left: -37%;
+        width: 900px;
+        transform: scale(0.65);
+    }
+    #orangeScore {
+        background-color: rgb(249, 98, 43);
+    }
+    #yellowScore {
+        background-color: gold;
+    }
+    #purpleScore {
+        background-color: rgb(162, 0, 255);
+    }
+    #minusScore {
+        background-color: brown;
+    }
+}
+
+@media only screen and (max-width: 900px) and (orientation: landscape) {
+    body {
+        overflow: hidden;
+    }
+    h1 {
+        font-family: Arial, sans-serif;
+    }
+    input {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        border: 2px solid black;
+        width: 30px;
+        height: 30px;
+        border-radius: 10%;
+        margin: 5px;
+    }
+    .pageQwinto {
+        background-color: rgb(179, 179, 179);
+        min-height: 100vh;
+    }
+    .QwintoBoard {
+        transform: scale(1.4);
+        transform-origin: top left;
+        padding: 5px;
+        border: 3px solid rgb(0, 0, 0);
+        background: radial-gradient(circle, rgb(46, 46, 46) 0%, rgb(97, 97, 97) 35%, rgb(165, 165, 165) 100%);
+        margin: 5%;
+        margin-bottom: 0%;
+        display: inline-grid;
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 0px;
+        top: 10%;
+        position:absolute;
+    }
+    .QwintoDice {
+        position: absolute;
+        left: 30%;
+        top: 2%;
+    }
+    .QwintoSpaceSquare {
+        background-color: rgba(0, 255, 255, 0);
+        border: 0;
+    }
+    .QwintoCircleSquare {
+        border-radius: 50%;
+    }
+    .QwintoDie1 {
+        background-color: rgb(249, 98, 43);
+    }
+    .QwintoDie2 {
+        background-color: gold;
+    }
+    .QwintoDie3 {
+        background-color: rgb(162, 0, 255);
+    }
+    .minus {
+        position: absolute;
+        top: 73%;
+        left: 33%;
+        background-color: brown;
+    }
+    .QwintoScore {
+        position: absolute;
+        top: 85%;
+        left: 10%;
+    }
+    #orangeScore {
+        background-color: rgb(249, 98, 43);
+    }
+    #yellowScore {
+        background-color: gold;
+    }
+    #purpleScore {
+        background-color: rgb(162, 0, 255);
+    }
+    #minusScore {
+        background-color: brown;
+    }
 }
