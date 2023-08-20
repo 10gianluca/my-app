@@ -192,6 +192,7 @@
         grid-template-columns: repeat(12, 1fr);
         column-gap: 0px;
         top: 10%;
+        left: -3%;
         position:absolute;
     }
     .QwintoDice {
