@@ -81,7 +81,7 @@ input{
     #board1{
         position: absolute;
         top: 10%;
-        left: 8%;
+        left: -7%;
     }
     #board2{
         visibility: hidden;

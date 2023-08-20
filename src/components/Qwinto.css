@@ -106,8 +106,8 @@
         display: inline-grid;
         grid-template-columns: repeat(12, 1fr);
         column-gap: 0px;
-        transform: scale(0.7);
-        left: -26.5%;
+        transform: scale(0.5);
+        left: -28%;
         top: 20%;
         position: absolute;
     }
