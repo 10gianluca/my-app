@@ -225,6 +225,7 @@
         position: absolute;
         top: 85%;
         left: 10%;
+        transform: scale(0.5);
     }
     #orangeScore {
         background-color: rgb(249, 98, 43);
