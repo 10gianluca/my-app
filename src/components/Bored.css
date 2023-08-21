@@ -97,6 +97,13 @@
       left: 50%; 
       transform: translateX(-50%); 
     }
+    #DateBtn{
+      visibility: hidden;
+      position: absolute;
+      top: 45%;
+      left: 50%; 
+      transform: translateX(-50%); 
+    }
     #reloadBtn{
       visibility: hidden;
       position: absolute;
@@ -154,8 +161,6 @@
     }
 
 
-
-
     #boredBtn{
       position: absolute;
       top: -600%;
@@ -207,7 +212,7 @@
     #reloadBtn{
       position: absolute;
       visibility: hidden;
-      top: 500%;
+      top: 800%;
       left: 50%; 
       transform: translateX(-50%); 
     }
@@ -217,7 +222,13 @@
       transform: translateX(-50%); 
 
     }
-    
-    
+    #DateBtn{
+      position: absolute;
+      visibility: hidden;
+      left: 50%;
+      top: 400%; 
+      transform: translateX(-50%); 
+    }
+
 
   }

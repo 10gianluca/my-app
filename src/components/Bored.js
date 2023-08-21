@@ -5,13 +5,13 @@ import './Bored.css';
 function Bored() {
   const navigate = useNavigate();
   
-  const glInside = ["Movie", "Old Board Game", "New Board Game", "Puzzle", "Puzzle??", "Ping Pong", "Reality Tv", "Craft", "Cook", "Video Game", "Nap", "Code", "Workout", "Go Outside"]
-  const glOutsideSummer = ["Soccer", "Tennis", "Walk", "Bike", "Hike", "Picnic", "Kayak", "Drive", "Shopping", "Go Inside"]
-  const glOutsideWinter = ["Tabogan", "Walk", "Fort", "ODR", "Snowman", "Drive", "Shopping", "Go Inside"]
+  const glInside = ["Bake","Movie", "Old Board Game", "New Board Game", "Puzzle", "Puzzle??", "Ping Pong", "Reality Tv", "Craft", "Cook", "Book", "Video Game", "Nap", "Code", "Workout", "Go Outside", "Cuddle"]
+  const glOutsideSummer = ["Explore","Soccer","Golf","Tennis", "Walk", "Bike", "Hike", "Picnic", "Kayak", "Drive", "Shopping","Go Inside", "Thrift"]
+  const glOutsideWinter = ["Explore","Tabogan", "Walk", "Fort", "ODR", "Snowman", "Drive", "Shopping", "Thrift", "Go Inside"]
   const aloneInside = ["Clean", "Tv", "Movie", "Puzzle", "Pottery", "Draw", "Paint", "Read", "Music", "Cook", "Bother Stephen", "Code", "Nap", "Video Game", "Go Outside"]
-  const aloneOutsideSummer = ["Run", "Walk", "Garden", "Change Bucky's Cage", "Walk Bucky", "Bike", "Read", "Tan", "Kayak", "Go Inside"]
-  const aloneOutsideWinter = ["Cross Country Ski", "Fort", "Walk", "Snowman", "Drive", "Go Inside"]
-
+  const aloneOutsideSummer = ["Run", "Walk", "Garden", "Change Bucky's Cage", "Walk Bucky", "Bike", "Read", "Tan", "Kayak", "Go Inside","Thrift"]
+  const aloneOutsideWinter = ["Cross Country Ski", "Fort", "Walk", "Snowman", "Drive", "Go Inside","Thrift"]
+  const date=["Museum", "Movies", "Cottage", "Dinner", "States", "Sail", "Book", "Escape Room","Breakfast","Ski", "Camping", "Zoo"]
 
   const changePage = (e) => {
     e.preventDefault();
@@ -20,6 +20,7 @@ function Bored() {
 
   const startBored = (e) => {
     document.getElementById('boredBtn').style.visibility = 'hidden'
+    document.getElementById('DateBtn').style.visibility='initial'
     document.getElementById('aloneBtn').style.visibility = 'initial'
     document.getElementById('glBtn').style.visibility = 'initial'
     document.getElementById('reloadBtn').style.visibility = 'initial'
@@ -30,6 +31,7 @@ function Bored() {
     document.getElementById('glBtn').style.visibility = 'hidden'
     document.getElementById('outsideBtn').style.visibility = 'initial'
     document.getElementById('insideBtn').style.visibility = 'initial'
+    document.getElementById('DateBtn').style.visibility = 'hidden'
   };
   const glClick = (e) => {
     document.getElementById('glBtn').setAttribute('clicked' , "true")
@@ -37,7 +39,19 @@ function Bored() {
     document.getElementById('glBtn').style.visibility = 'hidden'
     document.getElementById('outsideBtn').style.visibility = 'initial'
     document.getElementById('insideBtn').style.visibility = 'initial'
+    document.getElementById('DateBtn').style.visibility = 'hidden'
+
   };
+  const DateClick = (e) => {
+    document.getElementById('DateBtn').setAttribute('clicked' , "true")
+    document.getElementById('aloneBtn').style.visibility = 'hidden'
+    document.getElementById('DateBtn').style.visibility = 'hidden'
+    document.getElementById('glBtn').style.visibility = 'hidden'
+    document.getElementById('answer').style.visibility = 'visible'
+    const randomIndex = Math.floor(Math.random() * date.length);
+    var answer1 = date[randomIndex];
+    document.getElementById('answer').textContent  = answer1
+  }
   const outsideClick = (e) => {
     document.getElementById('outsideBtn').setAttribute('clicked' , "true")
     document.getElementById('outsideBtn').style.visibility = 'hidden'
@@ -118,6 +132,7 @@ function Bored() {
             <button clicked='false' className='button' id='boredBtn' onClick={startBored}>Bored?</button>
             <button clicked='false' className='button' id='aloneBtn' onClick={aloneClick}>Alone</button>
             <button clicked='false' className='button' id='glBtn' onClick={glClick}>With GL</button>
+            <button clicked='false' className='button' id='DateBtn' onClick={DateClick}>Date</button>
             <button clicked='false' className='button' id='outsideBtn' onClick={outsideClick}>Outside</button>
             <button clicked='false' className='button' id='insideBtn' onClick={insideClick}>Inside</button>
             <button clicked='false' className='button' id='winterBtn' onClick={winterClick} >Winter</button>
