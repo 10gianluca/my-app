@@ -32,6 +32,9 @@ h1{
 }
 
 .board{
+    position: absolute;
+    left: 10%;
+    top: 0%;
     padding: 30px;
     border: 5px solid rgb(0, 0, 0); 
     background: radial-gradient(circle, rgb(31, 31, 204) 0%, rgba(31,31,204) 35%, rgb(0, 8, 56) 100%);
@@ -45,6 +48,8 @@ h1{
 }
 
 #board2{
+    position: relative;
+    left: 50%;
     background:radial-gradient(circle, rgb(204, 31, 31) 0%, rgb(204, 31, 31) 35%, rgb(56, 0, 0) 100%); ;
 }
 
@@ -69,9 +74,9 @@ input{
 }
 
 .dice{
-    position: absolute;
-    left: 10%;
-    bottom: 351px;
+    position: relative;
+    left: 35%;
+    bottom: 10%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -81,9 +86,14 @@ input{
     #board1{
         position: absolute;
         top: 10%;
-        left: -7%;
+        left: 5%;
     }
     #board2{
         visibility: hidden;
+    }
+    .dice{
+        position: relative;
+        left: 9%;
+        top: 100px;
     }
 }
