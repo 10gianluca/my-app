@@ -86,14 +86,14 @@ input{
     #board1{
         position: absolute;
         top: 10%;
-        left: 5%;
+        left: 0%;
     }
     #board2{
         visibility: hidden;
     }
     .dice{
         position: relative;
-        left: 9%;
+        left: 0%;
         top: 100px;
     }
 }
