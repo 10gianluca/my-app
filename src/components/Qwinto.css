@@ -5,43 +5,110 @@
     h1{
         font-family: Arial, sans-serif;
     }
+
+    .bg {
+        animation: slide 3s ease-in-out infinite alternate;
+        background-image: linear-gradient(-60deg, rgb(249, 98, 43) 33%, gold 33%,rgb(162, 0, 255) 33%);
+        bottom: 0;
+        left: -50%;
+        opacity: .5;
+        position: fixed;
+        right: -50%;
+        top: 0;
+        z-index: -1;
+      }
+      
+      .bg2 {
+        animation-direction: alternate-reverse;
+        animation-duration: 10s;
+      }
+      
+      .bg3 {
+        animation-duration: 15s;
+      }
+      
+      @keyframes slide {
+        0% {
+          transform: translateX(-25%);
+        }
+        100% {
+          transform: translateX(25%);
+        }
+      }
+
     input{
-        text-align: center;
-        font-family: Arial, sans-serif;;
+        box-sizing: border-box;
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        margin: 8px;
+        font-family: Arial, sans-serif;
         font-size: 40px;
         border: 3px solid black;
-        width: 50px;
-        height:50px;
+        text-align: center;
         border-radius: 13%;
-        margin: 8px;
     }
+    
     .pageQwinto{
-        background-color: rgb(179, 179, 179);
         min-height: 100vh;
     }
+    .Board{
+        padding: 10%;
+        padding-left: 30%;
+        padding-right: 30%;
+        
+    }
     .QwintoBoard{
-        padding: 10px;
-        border: 5px solid rgb(0, 0, 0); 
-        background: radial-gradient(circle, rgb(46, 46, 46) 0%, rgb(97, 97, 97) 35%, rgb(165, 165, 165) 100%);
-        margin: 9%;
-        margin-bottom: 0%;
-        display: inline-grid;
-        grid-template-columns:repeat(12, 1fr);
-        column-gap: 0px;
+        display: grid;
+        grid-template-rows: repeat(3, 60px);
+        max-width: 100%;
+        margin: 0  auto;
+        
     }
     .QwintoDice{
-        position: absolute;
-        left: 28%;
-        top: 10%;
+        display: flex;
+        align-items: center; /* Aligns all child elements in the center vertically */
+        justify-content: center; /* Centers all elements horizontally */
+        gap: 10px; /* Adds space between the items */
     }
     .QwintoSpaceSquare{
         background-color: rgba(0, 255, 255, 0);
         border: 0;
+        width: 50px;
+        height: 50px;
     }
     .QwintoCircleSquare{
         border-radius: 50%;
+        width: 50px;
+        height: 50px;
     }
-
+    .die {
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        border: 3px solid black;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+      
+      .pip {
+        width: 10px;
+        height: 10px;
+        background-color: black;
+        border-radius: 50%;
+        position: absolute;
+      }
+      
+    .pip.one { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .pip.two { top: 20%; left: 20%; }
+    .pip.three { top: 20%; right: 20%; }
+    .pip.four { bottom: 20%; left: 20%; }
+    .pip.five { bottom: 20%; right: 20%; }
+    .pip.six { top: 50%; left: 20%; transform: translateY(-50%); }
+    .pip.seven { top: 50%; right: 20%; transform: translateY(-50%); }
     .QwintoDie1{
         background-color: rgb(249, 98, 43);
     }
@@ -52,192 +119,52 @@
         background-color: rgb(162, 0, 255);
     }
     .minus{
-        position: absolute;
-        left: 25.9%;
         background-color: brown;
+        text-align: center;
     }
     .QwintoScore{
-        position: absolute;
-        top: 55%;
-        left: 8%;
+        background-color: rgb(116, 116, 116);
+        text-align: center;
+    }
+    #equationSign{
+        max-width: 20px;
+    }
+    .orangeRange{
+        background-color: rgb(249, 98, 43);
+        text-align: center;
+    }
+    .yellowRange{
+        background-color: gold;
+        text-align: center;
+    }
+    .purpleRange{
+        background-color: rgb(162, 0, 255);
+        text-align: center;
     }
     #orangeScore{
-        background-color: rgb(249, 98, 43);
+    
     }
     #yellowScore{
-        background-color: gold;
+  
     }
     #purpleScore{
-        background-color: rgb(162, 0, 255);
+  
     }
     #minusScore{
         background-color: brown;
     }
-
-}
-
-@media only screen and (max-width: 768px) and (orientation: portrait) {
-    body {
-        overflow: hidden;
-    }
-    h1 {
-        font-family: Arial, sans-serif;
-    }
-    input {
-        text-align: center;
+    .rollButton{
+        box-sizing: border-box;
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        margin: 8px;
         font-family: Arial, sans-serif;
         font-size: 20px;
-        border: 2px solid black;
-        width: 30px;
-        height: 30px;
-        border-radius: 10%;
-        margin: 5px;
-    }
-    .pageQwinto {
-        background-color: rgb(179, 179, 179);
-        min-height: 100vh;
-    }
-    .QwintoBoard {
-        padding: 5px;
-        border: 3px solid rgb(0, 0, 0);
-        background: radial-gradient(circle, rgb(46, 46, 46) 0%, rgb(97, 97, 97) 35%, rgb(165, 165, 165) 100%);
-        margin: 5%;
-        margin-bottom: 0%;
-        display: inline-grid;
-        grid-template-columns: repeat(12, 1fr);
-        column-gap: 0px;
-        transform: scale(0.5);
-        left: -50%;
-        top: 20%;
-        position: absolute;
-    }
-    .QwintoDice {
-        position: absolute;
-        left: 20%;
-        top: 10%;
-    }
-    .QwintoSpaceSquare {
-        background-color: rgba(0, 255, 255, 0);
-        border: 0;
-    }
-    .QwintoCircleSquare {
-        border-radius: 50%;
-    }
-    .QwintoDie1 {
-        background-color: rgb(249, 98, 43);
-    }
-    .QwintoDie2 {
-        background-color: gold;
-    }
-    .QwintoDie3 {
-        background-color: rgb(162, 0, 255);
-    }
-    .minus {
-        position: absolute;
-        left: 30%;
-        top: 40%;
-        background-color: brown;
-    }
-    .QwintoScore {
-        position: absolute;
-        top: 45%;
-        left: -37%;
-        width: 900px;
-        transform: scale(0.65);
-    }
-    #orangeScore {
-        background-color: rgb(249, 98, 43);
-    }
-    #yellowScore {
-        background-color: gold;
-    }
-    #purpleScore {
-        background-color: rgb(162, 0, 255);
-    }
-    #minusScore {
-        background-color: brown;
-    }
-}
-
-@media only screen and (max-width: 900px) and (orientation: landscape) {
-    body {
-        overflow: hidden;
-    }
-    h1 {
-        font-family: Arial, sans-serif;
-    }
-    input {
+        border: 3px solid black;
         text-align: center;
-        font-family: Arial, sans-serif;
-        font-size: 20px;
-        border: 2px solid black;
-        width: 30px;
-        height: 30px;
-        border-radius: 10%;
-        margin: 5px;
+        border-radius: 13%;
+        vertical-align: middle;
     }
-    .pageQwinto {
-        background-color: rgb(179, 179, 179);
-        min-height: 100vh;
-    }
-    .QwintoBoard {
-        transform: scale(1.0);
-        transform-origin: top left;
-        padding: 5px;
-        border: 3px solid rgb(0, 0, 0);
-        background: radial-gradient(circle, rgb(46, 46, 46) 0%, rgb(97, 97, 97) 35%, rgb(165, 165, 165) 100%);
-        margin: 5%;
-        margin-bottom: 0%;
-        display: inline-grid;
-        grid-template-columns: repeat(12, 1fr);
-        column-gap: 0px;
-        top: 10%;
-        left: -3%;
-        position:absolute;
-    }
-    .QwintoDice {
-        position: absolute;
-        left: 30%;
-        top: 2%;
-    }
-    .QwintoSpaceSquare {
-        background-color: rgba(0, 255, 255, 0);
-        border: 0;
-    }
-    .QwintoCircleSquare {
-        border-radius: 50%;
-    }
-    .QwintoDie1 {
-        background-color: rgb(249, 98, 43);
-    }
-    .QwintoDie2 {
-        background-color: gold;
-    }
-    .QwintoDie3 {
-        background-color: rgb(162, 0, 255);
-    }
-    .minus {
-        position: absolute;
-        top: 73%;
-        left: 33%;
-        background-color: brown;
-    }
-    .QwintoScore {
-        position: absolute;
-        top: 85%;
-        left: 10%;
-        transform: scale(0.5);
-    }
-    #orangeScore {
-        background-color: rgb(249, 98, 43);
-    }
-    #yellowScore {
-        background-color: gold;
-    }
-    #purpleScore {
-        background-color: rgb(162, 0, 255);
-    }
-    #minusScore {
-        background-color: brown;
-    }
+
 }
