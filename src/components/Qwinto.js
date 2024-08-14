@@ -5,7 +5,7 @@ import "./fonts/IMFellDWPica-Italic.ttf";
 
 function Qwinto() {
   const navigate = useNavigate();
-  
+
   // State to track dice values and whether they are selected
   const [dice, setDice] = useState([
     { id: 'QwintoDie1', value: '', clicked: false },
@@ -18,6 +18,13 @@ function Qwinto() {
 
   // State to track the locked inputs
   const [lockedInputs, setLockedInputs] = useState([]);
+
+  // State to track the minus score
+  const [minusScore, setMinusScore] = useState(0);
+
+  // State to track the roll button text and visibility
+  const [rollButtonText, setRollButtonText] = useState('Roll');
+  const [showRollButton, setShowRollButton] = useState(true);
 
   const changePage = (e) => {
     e.preventDefault();
@@ -49,6 +56,14 @@ function Qwinto() {
     }, 0);
 
     setDiceTotal(total);
+
+    // Change the roll button to "Reroll" after the first click
+    if (rollButtonText === 'Roll') {
+      setRollButtonText('Reroll');
+    } else {
+      // Hide the roll button after the reroll
+      setShowRollButton(false);
+    }
   };
 
   const handleMinusClick = (id) => {
@@ -56,6 +71,12 @@ function Qwinto() {
     const clicked = element.getAttribute("clicked") === "true";
     element.setAttribute("clicked", !clicked);
     element.style.background = clicked ? "white" : "red";
+
+    if (!clicked) {
+      setMinusScore(prevScore => prevScore + 5);
+    } else {
+      setMinusScore(prevScore => prevScore - 5);
+    }
   };
 
   const renderPips = (value) => {
@@ -87,9 +108,33 @@ function Qwinto() {
   };
 
   const Done = () => {
-    const filledInputs = Array.from(document.querySelectorAll('input')).filter(input => input.value !== '');
-    setLockedInputs(filledInputs);
+    // Lock the inputs that have a value
+    const allInputs = document.querySelectorAll('input');
+    const inputsToLock = [];
+
+    allInputs.forEach(input => {
+      if (input.value) {
+        input.setAttribute('readOnly', true);
+        inputsToLock.push(input);
+      }
+    });
+
+    // Store the locked inputs in state
+    setLockedInputs(inputsToLock);
+
+    // Clear dice and dice total
+    setDice([
+      { id: 'QwintoDie1', value: '', clicked: false },
+      { id: 'QwintoDie2', value: '', clicked: false },
+      { id: 'QwintoDie3', value: '', clicked: false },
+    ]);
+    setDiceTotal(0);
+
+    // Reset the roll button for the next round
+    setRollButtonText('Roll');
+    setShowRollButton(true);
   };
+
   return (
     <div className="pageQwinto">
       <div className="bg"></div>
@@ -109,42 +154,41 @@ function Qwinto() {
               <div className='orangeRange'>
                   <input readOnly className="QwintoSpaceSquare" onClick={handleInputClick}></input>
                   <input readOnly className="QwintoSpaceSquare" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoHexSquare" id="orangeScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick}></input>
+                  <input className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoHexSquare" id="orangeScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick} readOnly></input>
                   <input readOnly className="QwintoSpaceSquare" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoHexSquare" id="orangeScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick}></input>
+                  <input className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoHexSquare" id="orangeScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick} readOnly></input>
               </div>
               <div className='yellowRange'>
                   <input readOnly className="QwintoSpaceSquare" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick}></input>
+                  <input className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick} readOnly></input>
                   <input readOnly className="QwintoSpaceSquare" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoHexSquare" id="yellowScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoSpaceSquare" onClick={handleInputClick}></input>
+                  <input className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoHexSquare" id="yellowScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick} readOnly></input>
               </div>
               <div className='purpleRange'>
-                  <input readOnly className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoHexSquare" id="purpleScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick}></input>
+                  <input className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoHexSquare" id="purpleScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick} readOnly></input>
                   <input readOnly className="QwintoSpaceSquare" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick}></input>
-                  <input readOnly className="QwintoHexSquare" id="purpleScore" maxLength="2" onClick={handleInputClick}></input>
+                  <input className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                  <input className="QwintoHexSquare" id="purpleScore" maxLength="2" onClick={handleInputClick} readOnly></input>
                   <input readOnly className="QwintoSpaceSquare" onClick={handleInputClick}></input>
                   <input readOnly className="QwintoSpaceSquare" onClick={handleInputClick}></input>
               </div>
@@ -161,9 +205,9 @@ function Qwinto() {
                 ))}
               </div>
             <div className='QwintoScore'>
-                <input readOnly className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick}></input>
-                <input readOnly className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick}></input>
-                <input readOnly className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick}></input>
+                <input className="QwintoCircleSquare" id="orangeScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                <input className="QwintoCircleSquare" id="yellowScore" maxLength="2" onClick={handleInputClick} readOnly></input>
+                <input className="QwintoCircleSquare" id="purpleScore" maxLength="2" onClick={handleInputClick} readOnly></input>
                 <input readOnly className="QwintoSpaceSquare" id="equationSign" value={"+"} ></input>
                 <input readOnly className="QwintoHexSquare" maxLength="2" onClick={handleInputClick}></input>
                 <input readOnly className="QwintoHexSquare" maxLength="2" onClick={handleInputClick}></input>
@@ -171,7 +215,7 @@ function Qwinto() {
                 <input readOnly className="QwintoHexSquare" maxLength="2" onClick={handleInputClick}></input>
                 <input readOnly className="QwintoHexSquare" maxLength="2" onClick={handleInputClick}></input>
                 <input readOnly className="QwintoSpaceSquare" id="equationSign" value={"-"} ></input>
-                <input readOnly className="QwintoHexSquare" id="minusScore" maxLength="2" onClick={handleInputClick}></input>
+                <input readOnly className="QwintoHexSquare" id="minusScore" value={minusScore} maxLength="2" onClick={handleInputClick}></input>
                 <input readOnly className="QwintoSpaceSquare" id="equationSign" value={"="} ></input>
                 <input readOnly className="QwintoHexSquare" maxLength="2" onClick={handleInputClick}></input>
             </div>
@@ -189,13 +233,14 @@ function Qwinto() {
                       {renderPips(die.value)}
                     </div>
                 ))}
-                <button onClick={rollDice} className='rollButton' >Roll</button>
+                {showRollButton && (
+                  <button onClick={rollDice} className='rollButton'>{rollButtonText}</button>
+                )}
                 <input readOnly className="QwintoDieTotal" value={diceTotal}/>
-                <button onClick={Done} className='rollButton' >Done</button>
-
-                </div>
+                <button onClick={Done} className='rollButton'>Done</button>
             </div>
         </div>
+    </div>
   );
 }
 
