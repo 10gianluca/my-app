@@ -8,9 +8,9 @@ function Qwinto() {
 
   // State to track dice values and whether they are selected
   const [dice, setDice] = useState([
-    { id: 'QwintoDie1', value: '', clicked: false },
-    { id: 'QwintoDie2', value: '', clicked: false },
-    { id: 'QwintoDie3', value: '', clicked: false },
+    { id: 'QwintoDie1', value: '', clicked: false, color: 'orange' },
+    { id: 'QwintoDie2', value: '', clicked: false, color: 'yellow' },
+    { id: 'QwintoDie3', value: '', clicked: false, color: 'purple' },
   ]);
 
   // State to track the total dice value
@@ -95,45 +95,95 @@ function Qwinto() {
     )) : null;
   };
 
-  const handleInputClick = (e) => {
-    const inputValue = e.target.value;
+  const getRowValues = (rowClassName) => {
+    const inputs = document.querySelectorAll(`.${rowClassName} input`);
+    return Array.from(inputs).map(input => parseInt(input.value, 10)).filter(val => !isNaN(val));
+  };
 
-    if (!lockedInputs.includes(e.target) && inputValue) {
-      // If there's already a value, remove it on click (if not locked)
-      e.target.value = '';
-    } else if (!lockedInputs.includes(e.target) && diceTotal > 0) {
+  const handleInputClick = (e) => {
+    // If the input already has a value, remove it
+    if (e.target.value) {
+        e.target.value = '';
+        return;
+    }
+
+    const inputValue = e.target.value;
+    const rowClassName = e.target.parentNode.className;
+    const rowValues = getRowValues(rowClassName);
+  
+    // Get the index of the clicked input in its row
+    const inputIndex = Array.from(e.target.parentNode.children).indexOf(e.target);
+  
+    // Get all inputs in the same column across all rows
+    const allRows = document.querySelectorAll('.QwintoBoard > div');
+    const columnValues = Array.from(allRows).map(row => {
+      const input = row.children[inputIndex];
+      return input ? parseInt(input.value, 10) : NaN;
+    }).filter(val => !isNaN(val));
+  
+    // Prevent placing a duplicate number in the row
+    if (rowValues.includes(diceTotal)) {
+      alert("Duplicate values are not allowed in the same row!");
+      return;
+    }
+  
+    // Prevent placing a duplicate number in the column
+    if (columnValues.includes(diceTotal)) {
+      alert("Duplicate values are not allowed in the same column!");
+      return;
+    }
+  
+    // Ensure numerical order within the row
+    const previousValue = e.target.previousElementSibling ? parseInt(e.target.previousElementSibling.value, 10) : null;
+    const nextValue = e.target.nextElementSibling ? parseInt(e.target.nextElementSibling.value, 10) : null;
+  
+    if ((previousValue !== null && diceTotal <= previousValue) || (nextValue !== null && diceTotal >= nextValue)) {
+      alert("Numbers must be placed in numerical order within the row!");
+      return;
+    }
+  
+    // Get the row color from the row className
+    const rowColor = rowClassName.includes('orangeRange') ? 'orange' :
+                     rowClassName.includes('yellowRange') ? 'yellow' :
+                     rowClassName.includes('purpleRange') ? 'purple' : '';
+  
+    // Check if any dice match the row color
+    const allowedColors = dice.filter(die => die.clicked && die.value !== '').map(die => die.color);
+  
+    if (!allowedColors.includes(rowColor)) {
+      alert(`You can only place numbers in the ${allowedColors.join(', ')} rows!`);
+      return;
+    }
+
+    if (diceTotal > 0) {
       // If there's no value and diceTotal > 0, insert the diceTotal
       e.target.value = diceTotal;
     }
-  };
+};
 
-  const Done = () => {
-    // Lock the inputs that have a value
-    const allInputs = document.querySelectorAll('input');
-    const inputsToLock = [];
+const Done = () => {
+  // Lock the inputs that have a value
+  const allInputs = document.querySelectorAll('.QwintoBoard input');
 
-    allInputs.forEach(input => {
-      if (input.value) {
-        input.setAttribute('readOnly', true);
-        inputsToLock.push(input);
-      }
-    });
+  allInputs.forEach(input => {
+    if (input.value) {
+      input.setAttribute('readOnly', true);
+    }
+  });
 
-    // Store the locked inputs in state
-    setLockedInputs(inputsToLock);
+  // Clear dice and dice total for the next round
+  setDice([
+    { id: 'QwintoDie1', value: '', clicked: false, color: 'orange' },
+    { id: 'QwintoDie2', value: '', clicked: false, color: 'yellow' },
+    { id: 'QwintoDie3', value: '', clicked: false, color: 'purple' },
+  ]);
+  setDiceTotal(0);
 
-    // Clear dice and dice total
-    setDice([
-      { id: 'QwintoDie1', value: '', clicked: false },
-      { id: 'QwintoDie2', value: '', clicked: false },
-      { id: 'QwintoDie3', value: '', clicked: false },
-    ]);
-    setDiceTotal(0);
+  // Reset the roll button for the next round
+  setRollButtonText('Roll');
+  setShowRollButton(true);
+};
 
-    // Reset the roll button for the next round
-    setRollButtonText('Roll');
-    setShowRollButton(true);
-  };
 
   return (
     <div className="pageQwinto">
