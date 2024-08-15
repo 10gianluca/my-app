@@ -159,31 +159,71 @@ function Qwinto() {
       // If there's no value and diceTotal > 0, insert the diceTotal
       e.target.value = diceTotal;
     }
-};
+  };
 
-const Done = () => {
-  // Lock the inputs that have a value
-  const allInputs = document.querySelectorAll('.QwintoBoard input');
+  const calculateScore = () => {
+    let totalScore = 0;
 
-  allInputs.forEach(input => {
-    if (input.value) {
-      input.setAttribute('readOnly', true);
-    }
-  });
+    // Calculate row scores
+    const rows = [
+      document.querySelectorAll('.orangeRange input'),
+      document.querySelectorAll('.yellowRange input'),
+      document.querySelectorAll('.purpleRange input'),
+    ];
 
-  // Clear dice and dice total for the next round
-  setDice([
-    { id: 'QwintoDie1', value: '', clicked: false, color: 'orange' },
-    { id: 'QwintoDie2', value: '', clicked: false, color: 'yellow' },
-    { id: 'QwintoDie3', value: '', clicked: false, color: 'purple' },
-  ]);
-  setDiceTotal(0);
+    rows.forEach((row) => {
+      const rowValues = Array.from(row).map(input => parseInt(input.value, 10));
+      if (rowValues.every(val => !isNaN(val))) { // Check if the row is fully filled
+        totalScore += rowValues.reduce((sum, val) => sum + val, 0);
+      }
+    });
 
-  // Reset the roll button for the next round
-  setRollButtonText('Roll');
-  setShowRollButton(true);
-};
+    // Calculate column scores
+    const columns = [
+      Array.from(document.querySelectorAll('.QwintoBoard > div')).map(row => parseInt(row.children[0].value, 10)),
+      Array.from(document.querySelectorAll('.QwintoBoard > div')).map(row => parseInt(row.children[1].value, 10)),
+      // Add more columns as needed based on your grid layout
+    ];
 
+    columns.forEach((column) => {
+      const columnValues = column.filter(val => !isNaN(val));
+      if (columnValues.length === rows.length) { // Check if the column is fully filled
+        totalScore += Math.max(...columnValues);
+      }
+    });
+
+    // Subtract minus points
+    totalScore -= minusScore;
+
+    return totalScore;
+  };
+
+  const Done = () => {
+    // Lock the inputs that have a value
+    const allInputs = document.querySelectorAll('.QwintoBoard input');
+
+    allInputs.forEach(input => {
+      if (input.value) {
+        input.setAttribute('readOnly', true);
+      }
+    });
+
+    // Calculate and display the final score
+    const finalScore = calculateScore();
+    alert(`Your final score is: ${finalScore}`);
+
+    // Clear dice and dice total for the next round
+    setDice([
+      { id: 'QwintoDie1', value: '', clicked: false, color: 'orange' },
+      { id: 'QwintoDie2', value: '', clicked: false, color: 'yellow' },
+      { id: 'QwintoDie3', value: '', clicked: false, color: 'purple' },
+    ]);
+    setDiceTotal(0);
+
+    // Reset the roll button for the next round
+    setRollButtonText('Roll');
+    setShowRollButton(true);
+  };
 
   return (
     <div className="pageQwinto">
