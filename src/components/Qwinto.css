@@ -1,7 +1,4 @@
-@media only screen and (min-width: 1024px) {
-    body{
-        overflow: hidden;
-    }
+
     h1{
         font-family: Arial, sans-serif;
     }
@@ -36,27 +33,14 @@
         }
       }
 
-    input{
-        box-sizing: border-box;
-        width: 50px;
-        height: 50px;
-        padding: 0;
-        margin: 8px;
-        font-family: Arial, sans-serif;
-        font-size: 40px;
-        border: 3px solid black;
-        text-align: center;
-        border-radius: 13%;
-    }
-    
     .pageQwinto{
         min-height: 100vh;
+        
     }
     .Board{
-        padding: 10%;
-        padding-left: 30%;
-        padding-right: 30%;
-        
+        padding-top: 10%;
+        display: flex;
+        justify-content: center;
     }
     .QwintoBoard{
         display: grid;
@@ -68,7 +52,6 @@
     .QwintoDice{
         display: flex;
         align-items: center; /* Aligns all child elements in the center vertically */
-        justify-content: center; /* Centers all elements horizontally */
         gap: 10px; /* Adds space between the items */
     }
     .QwintoSpaceSquare{
@@ -120,15 +103,33 @@
     }
     .minus{
         background-color: brown;
-        text-align: center;
     }
     .QwintoScore{
         background-color: rgb(116, 116, 116);
-        text-align: center;
     }
     #equationSign{
         max-width: 20px;
     }
+    .QwintoBoard input {
+        box-sizing: border-box;
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        margin: 0; /* Ensure no margin is applied */
+        font-family: Arial, sans-serif;
+        font-size: 40px;
+        text-align: center;
+    }
+    
+    .orangeRange, .yellowRange, .purpleRange {
+        display: flex; /* Use flexbox to ensure even spacing */
+        justify-content: flex-start; /* Align all elements to the start */
+        text-align: center;
+        margin: 0; /* Ensure no extra margin is applied to rows */
+        padding: 0; /* Ensure no padding is applied to rows */
+        
+    }
+    
     .orangeRange{
         background-color: rgb(249, 98, 43);
         text-align: center;
@@ -155,7 +156,7 @@
     }
     .rollButton{
         box-sizing: border-box;
-        width: 50px;
+        width: 80px;
         height: 50px;
         padding: 0;
         margin: 8px;
@@ -167,4 +168,3 @@
         vertical-align: middle;
     }
 
-}
