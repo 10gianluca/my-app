@@ -158,97 +158,112 @@ function Qwinto() {
 
   const handleInputClick = (e) => {
     if (lockedInputs.includes(e.target)) {
-      return; // Prevent editing of locked inputs
+        return; // Prevent editing of locked inputs
     }
 
     const rowClassName = e.target.parentNode.className;
     const rowColor = rowClassName.includes("orangeRange")
-      ? "orange"
-      : rowClassName.includes("yellowRange")
-      ? "yellow"
-      : rowClassName.includes("purpleRange")
-      ? "purple"
-      : "";
+        ? "orange"
+        : rowClassName.includes("yellowRange")
+        ? "yellow"
+        : rowClassName.includes("purpleRange")
+        ? "purple"
+        : "";
 
     const allowedColors = dice
-      .filter((die) => die.clicked && die.value !== "")
-      .map((die) => die.color);
+        .filter((die) => die.clicked && die.value !== "")
+        .map((die) => die.color);
 
     if (!allowedColors.includes(rowColor)) {
-      alert(`You can only place numbers in the ${allowedColors.join(", ")} rows!`);
-      return;
+        alert(`You can only place numbers in the ${allowedColors.join(", ")} rows!`);
+        return;
     }
 
     // Calculate the correct index in the array, skipping SpaceSquares
     let actualIndex = -1;
     const inputs = Array.from(e.target.parentNode.children);
     for (let i = 0; i < inputs.length; i++) {
-      if (!inputs[i].classList.contains("QwintoSpaceSquare")) {
-        actualIndex++;
-      }
-      if (inputs[i] === e.target) {
-        break;
-      }
+        if (!inputs[i].classList.contains("QwintoSpaceSquare")) {
+            actualIndex++;
+        }
+        if (inputs[i] === e.target) {
+            break;
+        }
+    }
+
+    // Check if the rolled number already exists in the color array
+    if (rowColor === "orange" && orangeArray.includes(diceTotal)) {
+        alert(`You cannot place the number ${diceTotal} in the orange row because it already exists.`);
+        return;
+    }
+    if (rowColor === "yellow" && yellowArray.includes(diceTotal)) {
+        alert(`You cannot place the number ${diceTotal} in the yellow row because it already exists.`);
+        return;
+    }
+    if (rowColor === "purple" && purpleArray.includes(diceTotal)) {
+        alert(`You cannot place the number ${diceTotal} in the purple row because it already exists.`);
+        return;
     }
 
     if (diceTotal > 0) {
-      if (previousInput && previousInput !== e.target) {
-        let previousActualIndex = -1;
-        const previousInputs = Array.from(previousInput.parentNode.children);
-        for (let i = 0; i < previousInputs.length; i++) {
-          if (!previousInputs[i].classList.contains("QwintoSpaceSquare")) {
-            previousActualIndex++;
-          }
-          if (previousInputs[i] === previousInput) {
-            break;
-          }
+        if (previousInput && previousInput !== e.target) {
+            let previousActualIndex = -1;
+            const previousInputs = Array.from(previousInput.parentNode.children);
+            for (let i = 0; i < previousInputs.length; i++) {
+                if (!previousInputs[i].classList.contains("QwintoSpaceSquare")) {
+                    previousActualIndex++;
+                }
+                if (previousInputs[i] === previousInput) {
+                    break;
+                }
+            }
+
+            const previousRowColor = previousInput.parentNode.className.includes("orangeRange")
+                ? "orange"
+                : previousInput.parentNode.className.includes("yellowRange")
+                ? "yellow"
+                : previousInput.parentNode.className.includes("purpleRange")
+                ? "purple"
+                : "";
+
+            // Reset the previous input to 0 in the array and clear the input box
+            if (previousRowColor === "orange") {
+                const newOrangeArray = [...orangeArray];
+                newOrangeArray[previousActualIndex] = 0;
+                setOrangeArray(newOrangeArray);
+            } else if (previousRowColor === "yellow") {
+                const newYellowArray = [...yellowArray];
+                newYellowArray[previousActualIndex] = 0;
+                setYellowArray(newYellowArray);
+            } else if (previousRowColor === "purple") {
+                const newPurpleArray = [...purpleArray];
+                newPurpleArray[previousActualIndex] = 0;
+                setPurpleArray(newPurpleArray);
+            }
+
+            previousInput.value = ""; // Clear the value of the previous input box
         }
 
-        const previousRowColor = previousInput.parentNode.className.includes("orangeRange")
-          ? "orange"
-          : previousInput.parentNode.className.includes("yellowRange")
-          ? "yellow"
-          : previousInput.parentNode.className.includes("purpleRange")
-          ? "purple"
-          : "";
-
-        // Reset the previous input to 0 in the array and clear the input box
-        if (previousRowColor === "orange") {
-          const newOrangeArray = [...orangeArray];
-          newOrangeArray[previousActualIndex] = 0;
-          setOrangeArray(newOrangeArray);
-        } else if (previousRowColor === "yellow") {
-          const newYellowArray = [...yellowArray];
-          newYellowArray[previousActualIndex] = 0;
-          setYellowArray(newYellowArray);
-        } else if (previousRowColor === "purple") {
-          const newPurpleArray = [...purpleArray];
-          newPurpleArray[previousActualIndex] = 0;
-          setPurpleArray(newPurpleArray);
+        // Update the corresponding array based on the row color
+        if (rowColor === "orange") {
+            const newOrangeArray = [...orangeArray];
+            newOrangeArray[actualIndex] = diceTotal; // Update only the clicked box
+            setOrangeArray(newOrangeArray);
+        } else if (rowColor === "yellow") {
+            const newYellowArray = [...yellowArray];
+            newYellowArray[actualIndex] = diceTotal; // Update only the clicked box
+            setYellowArray(newYellowArray);
+        } else if (rowColor === "purple") {
+            const newPurpleArray = [...purpleArray];
+            newPurpleArray[actualIndex] = diceTotal; // Update only the clicked box
+            setPurpleArray(newPurpleArray);
         }
 
-        previousInput.value = ""; // Clear the value of the previous input box
-      }
-
-      // Update the corresponding array based on the row color
-      if (rowColor === "orange") {
-        const newOrangeArray = [...orangeArray];
-        newOrangeArray[actualIndex] = diceTotal; // Update only the clicked box
-        setOrangeArray(newOrangeArray);
-      } else if (rowColor === "yellow") {
-        const newYellowArray = [...yellowArray];
-        newYellowArray[actualIndex] = diceTotal; // Update only the clicked box
-        setYellowArray(newYellowArray);
-      } else if (rowColor === "purple") {
-        const newPurpleArray = [...purpleArray];
-        newPurpleArray[actualIndex] = diceTotal; // Update only the clicked box
-        setPurpleArray(newPurpleArray);
-      }
-
-      e.target.value = diceTotal; // Insert the diceTotal into the clicked box
-      setPreviousInput(e.target); // Track the current box as the previous one
+        e.target.value = diceTotal; // Insert the diceTotal into the clicked box
+        setPreviousInput(e.target); // Track the current box as the previous one
     }
-  };
+};
+
 
   const calculateScore = () => {
     let totalScore = 0;
