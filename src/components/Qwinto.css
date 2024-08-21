@@ -116,7 +116,7 @@ h1{
     width: 50px;
     height: 50px;
     padding: 0;
-    margin: 0; /* Ensure no margin is applied */
+    margin: 2px; /* Ensure no margin is applied */
     font-family: Arial, sans-serif;
     font-size: 40px;
     text-align: center;
@@ -128,20 +128,16 @@ h1{
     text-align: center;
     margin: 0; /* Ensure no extra margin is applied to rows */
     padding: 0; /* Ensure no padding is applied to rows */
-    
+    align-items: center; /* Center inputs vertically */
 }
 
 .orangeRange{
-    background-color: rgb(249, 98, 43);
-    text-align: center;
-}
+    background-color: rgb(249, 98, 43);}
 .yellowRange{
     background-color: gold;
-    text-align: center;
 }
 .purpleRange{
     background-color: rgb(162, 0, 255);
-    text-align: center;
 }
 #orangeRowScore{
     border-color:rgb(249, 98, 43);
