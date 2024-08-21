@@ -191,17 +191,32 @@ function Qwinto() {
         }
     }
 
+    // Get the array for the current row color
+    let currentArray;
+    if (rowColor === "orange") {
+        currentArray = orangeArray;
+    } else if (rowColor === "yellow") {
+        currentArray = yellowArray;
+    } else if (rowColor === "purple") {
+        currentArray = purpleArray;
+    }
+
     // Check if the rolled number already exists in the color array
-    if (rowColor === "orange" && orangeArray.includes(diceTotal)) {
-        alert(`You cannot place the number ${diceTotal} in the orange row because it already exists.`);
+    if (currentArray.includes(diceTotal)) {
+        alert(`You cannot place the number ${diceTotal} in the ${rowColor} row because it already exists.`);
         return;
     }
-    if (rowColor === "yellow" && yellowArray.includes(diceTotal)) {
-        alert(`You cannot place the number ${diceTotal} in the yellow row because it already exists.`);
-        return;
-    }
-    if (rowColor === "purple" && purpleArray.includes(diceTotal)) {
-        alert(`You cannot place the number ${diceTotal} in the purple row because it already exists.`);
+
+    // Validate the number placement according to the rule
+    const isValidPlacement = currentArray.every((value, index) => {
+        if (value === 0) return true; // Skip 0 values
+        if (index < actualIndex && value >= diceTotal) return false; // Check previous numbers
+        if (index > actualIndex && value <= diceTotal && value !== 0) return false; // Check next numbers
+        return true;
+    });
+
+    if (!isValidPlacement) {
+        alert(`Invalid placement. The number ${diceTotal} must be larger than numbers before it and smaller than numbers after it.`);
         return;
     }
 
@@ -265,40 +280,106 @@ function Qwinto() {
 };
 
 
+
   const calculateScore = () => {
-    let totalScore = 0;
 
-    const rows = [
-      document.querySelectorAll(".orangeRange input"),
-      document.querySelectorAll(".yellowRange input"),
-      document.querySelectorAll(".purpleRange input"),
-    ];
-
-    rows.forEach((row) => {
-      const rowValues = Array.from(row).map((input) => parseInt(input.value, 10));
-      if (rowValues.every((val) => !isNaN(val))) {
-        totalScore += rowValues.reduce((sum, val) => sum + val, 0);
-      }
-    });
-
-    totalScore -= minusScore;
-
-    return totalScore;
   };
 
   const Done = () => {
     const allInputs = document.querySelectorAll(".QwintoBoard input");
-
+  
     const newLockedInputs = Array.from(allInputs).filter((input) => input.value);
     setLockedInputs([...lockedInputs, ...newLockedInputs]); // Lock the inputs with values
-
+  
     newLockedInputs.forEach((input) => {
       input.setAttribute("readOnly", true); // Set inputs with a value to read-only
     });
+  
+    // Debugging: Check the current values of the arrays
+    console.log("Orange Array:", orangeArray);
+    console.log("Yellow Array:", yellowArray);
+    console.log("Purple Array:", purpleArray);
+  
+    // Check the specific condition
+    //BOX 1
+    if (orangeArray[0] !== 0 && yellowArray[1] !== 0 && purpleArray[2] !== 0) {
+      console.log("Condition met. Updating boxScore1...");
+      const boxScore1Input = document.getElementById("boxScore1");
+      if (boxScore1Input) {
+        boxScore1Input.value = purpleArray[2];
+      } else {
+        console.log("Element with id 'boxScore1' not found.");
+      }
+    } else {
+      console.log("Condition not met.");
+    }
+    //BOX 2
+    if (orangeArray[1] !== 0 && yellowArray[2] !== 0 && purpleArray[3] !== 0) {
+      console.log("Condition met. Updating boxScore2...");
+      const boxScore2Input = document.getElementById("boxScore2");
+      if (boxScore2Input) {
+        boxScore2Input.value = orangeArray[1];
+      } else {
+        console.log("Element with id 'boxScore2' not found.");
+      }
+    } else {
+      console.log("Condition not met.");
+    }
+    //BOX 3
+    if (orangeArray[4] !== 0 && yellowArray[5] !== 0 && purpleArray[6] !== 0) {
+      const boxScore3Input = document.getElementById("boxScore3");
+      if (boxScore3Input) {
+        boxScore3Input.value = orangeArray[4];
+      } else {
+        console.log("Element with id 'boxScore3' not found.");
+      }
+    } else {
+      console.log("Condition not met.");
+    }
+    if (orangeArray[5] !== 0 && yellowArray[6] !== 0 && purpleArray[7] !== 0) {
+      const boxScore4Input = document.getElementById("boxScore4");
+      if (boxScore4Input) {
+        boxScore4Input.value = yellowArray[6];
+      } else {
+        console.log("Element with id 'boxScore4' not found.");
+      }
+    } else {
+      console.log("Condition not met.");
+    }
+    if (orangeArray[6] !== 0 && yellowArray[7] !== 0 && purpleArray[8] !== 0) {
+      console.log("Condition met. Updating boxScore5...");
+      const boxScore5Input = document.getElementById("boxScore5");
+      if (boxScore5Input) {
+        boxScore5Input.value = purpleArray[8];
+      } else {
+        console.log("Element with id 'boxScore5' not found.");
+      }
+    } else {
+      console.log("Condition not met.");
+    }
+  
+    if (orangeArray.every((value) => value !== 0)) {
+      const orangeScoreInput = document.getElementById("orangeRowScore");
+      if (orangeScoreInput) {
+        orangeScoreInput.value = orangeArray[orangeArray.length - 1];
+      }
+    }
+    if (yellowArray.every((value) => value !== 0)) {
+      const yellowScoreInput = document.getElementById("yellowRowScore");
+      if (yellowScoreInput) {
+        yellowScoreInput.value = yellowArray[yellowArray.length - 1];
+      }
+    }
+    if (purpleArray.every((value) => value !== 0)) {
+      const purpleScoreInput = document.getElementById("purpleRowScore");
+      if (purpleScoreInput) {
+        purpleScoreInput.value = purpleArray[purpleArray.length - 1];
+      }
+    }
 
     const finalScore = calculateScore();
     alert(`Your final score is: ${finalScore}`);
-
+  
     // Reset game state
     setDice([
       { id: "QwintoDie1", value: "", clicked: false, color: "orange" },
@@ -309,10 +390,14 @@ function Qwinto() {
     setRollButtonText("Roll");
     setShowRollButton(true);
     setPreviousInput(null);
-    console.log(orangeArray);
-    console.log(yellowArray);
-    console.log(purpleArray);
+    console.log("Game reset.");
+    console.log(orangeArray)
+    console.log(yellowArray)
+    console.log(purpleArray)
   };
+  
+  
+
 
   return (
     <div className="pageQwinto">
@@ -550,21 +635,21 @@ function Qwinto() {
           <div className="QwintoScore">
             <input
               className="QwintoCircleSquare"
-              id="orangeScore"
+              id="orangeRowScore"
               maxLength="2"
               onClick={handleInputClick}
               readOnly
             ></input>
             <input
               className="QwintoCircleSquare"
-              id="yellowScore"
+              id="yellowRowScore"
               maxLength="2"
               onClick={handleInputClick}
               readOnly
             ></input>
             <input
               className="QwintoCircleSquare"
-              id="purpleScore"
+              id="purpleRowScore"
               maxLength="2"
               onClick={handleInputClick}
               readOnly
@@ -578,30 +663,35 @@ function Qwinto() {
             <input
               readOnly
               className="QwintoHexSquare"
+              id="boxScore1"
               maxLength="2"
               onClick={handleInputClick}
             ></input>
             <input
               readOnly
               className="QwintoHexSquare"
+              id="boxScore2"
               maxLength="2"
               onClick={handleInputClick}
             ></input>
             <input
               readOnly
               className="QwintoHexSquare"
+              id="boxScore3"
               maxLength="2"
               onClick={handleInputClick}
             ></input>
             <input
               readOnly
               className="QwintoHexSquare"
+              id="boxScore4"
               maxLength="2"
               onClick={handleInputClick}
             ></input>
             <input
               readOnly
               className="QwintoHexSquare"
+              id="boxScore5"
               maxLength="2"
               onClick={handleInputClick}
             ></input>
